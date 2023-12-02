@@ -1,11 +1,12 @@
 $header-height: 65px;
-$bg-color:#f2f2f2;
+$bg-color: #f2f2f2;
 
 header {
   height: $header-height !important;
   display: flex;
   align-items: center !important;
   background-color: #fff !important;
+  justify-content: space-between;
 }
 body {
   background-color: $bg-color;
@@ -15,4 +16,10 @@ body {
 
 main {
   height: calc(100dvh - $header-height);
+}
+a {
+  color: black;
+}
+a:hover {
+  color: black;
 }

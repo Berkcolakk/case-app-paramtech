@@ -1,0 +1,15 @@
+.card > img {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.card {
+  display: flex;
+}
+.cardContainer {
+  background-color: #f2f2f2;
+  width: 100%;
+}
+.cardPriceName {
+  display: flex;
+  justify-content: space-between;
+}

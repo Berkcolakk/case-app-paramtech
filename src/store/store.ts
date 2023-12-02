@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import userSlice from "./slices/UserSlice";
+import cardSlice from "./slices/CardSlice";
 
 const store = configureStore({
     reducer: {
-        user: userSlice
+        user: userSlice,
+        card: cardSlice
     },
 })
 export type RootState = ReturnType<typeof store.getState>

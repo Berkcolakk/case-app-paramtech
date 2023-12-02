@@ -1,26 +1,31 @@
 import { IUser } from '@/interfaces/Login'
+import { getCookie } from '@/utils/cookie.utils'
 import { b64d } from '@/utils/encrpytion.utils'
 import { createSlice } from '@reduxjs/toolkit'
 
 export interface CounterState {
-    user: IUser | null
+    token: string | null;
+    email: string | null;
 }
 
 const initialState: CounterState = {
-    user: localStorage.getItem("user") ? JSON.parse(b64d(localStorage.getItem("user")) ?? "") : null
+    token: getCookie("token"),
+    email: b64d(localStorage.email)
 }
 
 export const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
-        setUser: (state, action) => {
-            state.user = action.payload
+        setToken: (state, action) => {
+            state.token = action.payload
+        },
+        setEmail : (state, action) => {
+            state.email = action.payload
         },
     },
 })
 
-// Action creators are generated for each case reducer function
-export const { setUser } = userSlice.actions
+export const { setToken,setEmail } = userSlice.actions
 
 export default userSlice.reducer
