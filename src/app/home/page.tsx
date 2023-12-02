@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation'
 import { DEFAULT } from "@/router"
 export default function Home() {
     const router = useRouter();
-    const [user, setUser] = useLocalStorage('user', null)
+    const [user] = useLocalStorage('user', undefined)
 
     useEffect(() => {
         if (!user) {

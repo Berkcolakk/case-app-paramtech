@@ -15,6 +15,9 @@ export function b64e(str: any) {
 
 export function b64d(encodedStr: any) {
     try {
+        if(!encodedStr) {
+            return null;
+        }
         const decrypted = atob(encodedStr).split('').map((char, i) => char.charCodeAt(0) ^ KEY.charCodeAt(i % KEY.length));
         return String.fromCharCode(...decrypted);
     } catch (error) {

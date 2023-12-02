@@ -7,7 +7,7 @@ import {
 } from 'react'
 import { useEventListener } from './useEventListener'
 import useEventCallback from './useEventCallback'
-import { b64d, b64e } from '@/utils/encrpytion'
+import { b64d, b64e } from '@/utils/encrpytion.utils'
 
 
 declare global {

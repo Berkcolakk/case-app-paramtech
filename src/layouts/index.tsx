@@ -3,6 +3,7 @@ import Main from "./main";
 import Header from "./header";
 import "@/assets/index.scss"
 import StyledComponentsRegistry from "@/lib/AntdRegistry";
+import ReduxProvider from "@/providers/ReduxProvider";
 
 const Layout = ({
     children,
@@ -10,12 +11,14 @@ const Layout = ({
     children: React.ReactNode
 }) => {
     return (
-        <StyledComponentsRegistry>
-            <Header />
-            <Main>
-                {children}
-            </Main>
-        </StyledComponentsRegistry>
+        <ReduxProvider>
+            <StyledComponentsRegistry>
+                <Header />
+                <Main>
+                    {children}
+                </Main>
+            </StyledComponentsRegistry>
+        </ReduxProvider>
     )
 }
 export default Layout;
