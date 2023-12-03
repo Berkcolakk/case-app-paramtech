@@ -5,12 +5,12 @@ import { createSlice } from '@reduxjs/toolkit'
 
 export interface CounterState {
     token: string | null;
-    email: string | null;
+    email?: string | null;
 }
 
 const initialState: CounterState = {
     token: getCookie("token"),
-    email: b64d(localStorage.email)
+    email: b64d(localStorage.email)?.replace(/['"]+/g, '')
 }
 
 export const userSlice = createSlice({

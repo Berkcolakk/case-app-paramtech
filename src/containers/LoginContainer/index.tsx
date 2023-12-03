@@ -28,11 +28,7 @@ const LoginContainer = () => {
         setCookie("token", result.token)
         router.push(HOME)
     }
-    useEffect(() => {
-        if (!"value") {
-            router.push(HOME)
-        }
-    }, ["value"])
+    
     return (
         <Wrapper>
             <Form layout="vertical" onFinish={handleFinish}
