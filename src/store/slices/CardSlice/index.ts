@@ -3,21 +3,21 @@ import { b64d } from '@/utils/encrpytion.utils'
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
 export interface CounterState {
-    selectedCards: Array<ICard>
+    cart: Array<ICard>
     totalPrice: number;
 }
 
 const initialState: CounterState = {
-    selectedCards: JSON.parse(b64d(localStorage.getItem("selectedCards")) ?? "[]"),
+    cart: JSON.parse(b64d(localStorage.getItem("cart")) ?? "[]"),
     totalPrice: 0
 }
 
-export const cardSlice = createSlice({
+export const cartSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
-        setSelectedCards: (state, action: PayloadAction<Array<ICard>>) => {
-            state.selectedCards = action.payload
+        setCart: (state, action: PayloadAction<Array<ICard>>) => {
+            state.cart = action.payload
             let total = 0;
             action.payload.forEach((item) => {
                 total += item.price
@@ -27,6 +27,6 @@ export const cardSlice = createSlice({
     },
 })
 
-export const { setSelectedCards } = cardSlice.actions
+export const { setCart } = cartSlice.actions
 
-export default cardSlice.reducer
+export default cartSlice.reducer

@@ -7,12 +7,12 @@ import { Card as CardAntd } from "antd"
 import Meta from "antd/es/card/Meta";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
-import { setSelectedCards } from "@/store/slices/CardSlice";
+import { setCart } from "@/store/slices/CardSlice";
 import { RootState } from "@/store/store";
 import { b64e } from "@/utils/encrpytion.utils";
 const Card = (props: ICard) => {
     const dispatch = useDispatch();
-    const selectedCards = useSelector((state: RootState) => state.card.selectedCards);
+    const selectedCards = useSelector((state: RootState) => state.card.cart);
     const existsItem = (currentId: string) => {
         return selectedCards.filter((item) => item._id === currentId).length
     }
@@ -30,7 +30,7 @@ const Card = (props: ICard) => {
                 } else {
                     newArr = [...selectedCards, props]
                 }
-                dispatch(setSelectedCards(newArr))
+                dispatch(setCart(newArr))
                 localStorage.setItem("selectedCards", JSON.stringify(b64e(newArr)))
             }} >
             <Meta
