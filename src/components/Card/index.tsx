@@ -11,7 +11,7 @@ import { setCart } from "@/store/slices/CartSlice";
 import { RootState } from "@/store/store";
 const Card = (props: ICard) => {
     const dispatch = useDispatch();
-    const cart = useSelector((state: RootState) => state.card.cart);
+    const cart = useSelector((state: RootState) => state.cart.cart);
     const existsItem = (currentId: string) => {
         return cart.filter((item) => item._id === currentId).length
     }

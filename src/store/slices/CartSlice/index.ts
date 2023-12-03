@@ -13,7 +13,7 @@ const initialState: CounterState = {
 }
 
 export const cartSlice = createSlice({
-    name: 'user',
+    name: 'cart',
     initialState,
     reducers: {
         setCart: (state, action: PayloadAction<Array<ICard>>) => {

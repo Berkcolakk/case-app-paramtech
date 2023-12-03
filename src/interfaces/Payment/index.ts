@@ -1,9 +1,9 @@
 export interface IPayment {
-    packageIds: number[];
+    packageIds?: string[];
     cardHolderName: string;
     cardNumber: number;
     expireDate: string;
     cvv: string;
-    totalAmount: number;
-    currency: string;
+    totalAmount?: number;
+    currency?: string;
 }

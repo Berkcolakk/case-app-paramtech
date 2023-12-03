@@ -14,8 +14,8 @@ import { useSelector } from "react-redux";
 const CardListContainer = () => {
     const router = useRouter();
     const { data, isLoading } = useQuery<TCard>('packages', GetAllPackages)
-    const totalPrice = useSelector((state: RootState) => state.card.totalPrice);
-    const cart = useSelector((state: RootState) => state.card.cart);
+    const totalPrice = useSelector((state: RootState) => state.cart.totalPrice);
+    const cart = useSelector((state: RootState) => state.cart.cart);
 
 
     return (

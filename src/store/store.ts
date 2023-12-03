@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import userSlice from "./slices/UserSlice";
-import cardSlice from "./slices/CartSlice";
+import cartSlice from "./slices/CartSlice";
+import creditCardSlice from "./slices/CreditCardSlice";
 
 const store = configureStore({
     reducer: {
         user: userSlice,
-        card: cardSlice
+        cart: cartSlice,
+        creditCard: creditCardSlice
     },
 })
 export type RootState = ReturnType<typeof store.getState>
