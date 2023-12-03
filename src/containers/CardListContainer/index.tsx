@@ -1,3 +1,4 @@
+import CustomButton from "@/components/Button";
 import CardList from "@/components/CardList";
 import Wrapper from "@/components/Wrapper";
 import { DEFAULT } from "@/router";
@@ -20,8 +21,15 @@ const CardListContainer = () => {
         <Wrapper>
             <CardList data={data} isLoading={isLoading} />
             <Divider></Divider>
-            
-        </Wrapper>  
+            <div style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems:"center"
+            }}>
+                <h3>Seçilen Paket Tutarı: <b>650TL</b></h3>
+                <CustomButton>Devam Et</CustomButton>
+            </div>
+        </Wrapper>
     )
 }
 export default CardListContainer;

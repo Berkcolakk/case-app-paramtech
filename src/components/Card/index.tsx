@@ -2,7 +2,7 @@ import { ICard } from "@/interfaces/Card";
 import Image from "next/image";
 import { ReactNode } from "react";
 import "@/assets/card.scss"
-import { Avatar, Badge, Divider, Space } from "antd";
+import { Avatar, Badge, Divider, Space, Tag } from "antd";
 import { Card as CardAntd } from "antd"
 import Meta from "antd/es/card/Meta";
 import Link from "next/link";
@@ -27,7 +27,7 @@ const Card = (props: ICard) => {
             }} >
             <Meta
                 avatar={<Image src={props.imagePath} alt={props.name} width={50} height={50} />}
-                title={<div style={{ display: "flex", justifyContent: "space-between" }}><b>{props.name}</b><b>{props.price}{props.currency}</b></div>}
+                title={<div style={{ display: "flex", justifyContent: "space-between" }}><h4><b>{props.name}</b></h4><b>{props.price}{props.currency}</b></div>}
                 description={
                     <>
                         <Space>
@@ -35,8 +35,12 @@ const Card = (props: ICard) => {
                                 return <Space key={index} size={8}><Badge status="default" /> item</Space>
                             })}
                         </Space>
-                        <a style={{ fontSize: "10px", color: "#3cc8c3" }}>Paket Detayını Görüntüle</a>
+                        <Space><a style={{ fontSize: "10px", color: "#3cc8c3" }}>Paket Detayını Görüntüle</a></Space>
                         <div style={{ borderBottom: "1px solid #c4c4c4" }}></div>
+                        {props.tags.map((item, index) => {
+                            return <Space key={index} size={3}><Tag>{item}</Tag></Space>
+                        })}
+
                     </>
                 }
             />
