@@ -22,9 +22,11 @@ const PaymentContainer = () => {
                 mainContainer={
                     <PaymentCardInfo />
                 }
-                SecondryContainer={
+                mainContainerWidth="500px"
+                secondryContainer={
                     <CartContainer />
                 }
+                secondryContainerWidth="400px"
             />
         </>
     )

@@ -19,7 +19,7 @@ const CardListContainer = () => {
 
 
     return (
-        <Wrapper>
+        <Wrapper width="800px">
             <CardList data={data} isLoading={isLoading} />
             <Divider></Divider>
             <div style={{

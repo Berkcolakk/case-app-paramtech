@@ -7,7 +7,7 @@ const CartContainer = () => {
     const cart = useSelector((state: RootState) => state.card.cart);
 
     return (
-        <div style={{ width: "300px" }} >
+        <div style={{ width: "400px" }} >
             <List
                 header={<div>Sepetteki Paketler</div>}
                 footer={<CustomButton>Ödeme Yap</CustomButton>}

@@ -8,7 +8,7 @@ const CardList = ({ data, isLoading }: {
 }) => {
     
     return (
-        <Row gutter={16} style={{ width: "700px" }}>
+        <Row gutter={16}>
             {data?.allPackages?.map((item: ICard) => {
                 return (
                     <Col key={item._id} span={12} >

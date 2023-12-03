@@ -29,7 +29,8 @@ const Card = (props: ICard) => {
     const cardStle = {
         backgroundColor: "#f2f2f2",
         margin: "5px",
-        borderColor: existsItem(props._id) !== 0 ? "green" : ""
+        borderColor: existsItem(props._id) !== 0 ? "green" : "",
+        height:"160px"
     }
     return (
         <CardAntd loading={props.isLoading} style={cardStle}
