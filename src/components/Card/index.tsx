@@ -7,35 +7,39 @@ import { Card as CardAntd } from "antd"
 import Meta from "antd/es/card/Meta";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
-import { setCart } from "@/store/slices/CardSlice";
+import { setCart } from "@/store/slices/CartSlice";
 import { RootState } from "@/store/store";
-import { b64e } from "@/utils/encrpytion.utils";
 const Card = (props: ICard) => {
     const dispatch = useDispatch();
-    const selectedCards = useSelector((state: RootState) => state.card.cart);
+    const cart = useSelector((state: RootState) => state.card.cart);
     const existsItem = (currentId: string) => {
-        return selectedCards.filter((item) => item._id === currentId).length
+        return cart.filter((item) => item._id === currentId).length
+    }
+    const clickHandle = () => {
+        let newArr = [] as any;
+        if (existsItem(props._id) !== 0) {
+            const arr = cart.filter((item) => item._id !== props._id)
+            newArr = [...arr]
+        } else {
+            newArr = [...cart, props]
+        }
+        dispatch(setCart(newArr))
+        window.localStorage.setItem("cart", JSON.stringify(newArr))
+    }
+    const cardStle = {
+        backgroundColor: "#f2f2f2",
+        margin: "5px",
+        borderColor: existsItem(props._id) !== 0 ? "green" : ""
     }
     return (
-        <CardAntd loading={props.isLoading} style={{
-            backgroundColor: "#f2f2f2",
-            margin: "5px",
-            borderColor: existsItem(props._id) !== 0 ? "green" : ""
-        }}
-            onClick={() => {
-                let newArr = [] as any;
-                if (existsItem(props._id) !== 0) {
-                    const arr = selectedCards.filter((item) => item._id !== props._id)
-                    newArr = [...arr]
-                } else {
-                    newArr = [...selectedCards, props]
-                }
-                dispatch(setCart(newArr))
-                localStorage.setItem("selectedCards", JSON.stringify(b64e(newArr)))
-            }} >
+        <CardAntd loading={props.isLoading} style={cardStle}
+            onClick={clickHandle} >
             <Meta
-                avatar={<Image src={props.imagePath} alt={props.name} width={50} height={50} />}
-                title={<div style={{ display: "flex", justifyContent: "space-between" }}><h4><b>{props.name}</b></h4><b>{props.price}{props.currency}</b></div>}
+                avatar={<Image objectFit="cover" src={props.imagePath} alt={props.name} width={70} height={70} />}
+                title={
+                    <div style={{ display: "flex", justifyContent: "space-between" }}>
+                        <b>{props.name}</b><b>{props.price}{props.currency}</b>
+                    </div>}
                 description={
                     <>
                         <Space>

@@ -1,5 +1,5 @@
 import { ICard } from '@/interfaces/Card'
-import { b64d } from '@/utils/encrpytion.utils'
+import { getDefaultValForTotalPrice } from '@/utils/cart.utils';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
 export interface CounterState {
@@ -8,8 +8,8 @@ export interface CounterState {
 }
 
 const initialState: CounterState = {
-    cart: JSON.parse(b64d(localStorage.getItem("cart")) ?? "[]"),
-    totalPrice: 0
+    cart: window.localStorage.cart ? JSON.parse(window.localStorage.cart) : [],
+    totalPrice: getDefaultValForTotalPrice()
 }
 
 export const cartSlice = createSlice({
@@ -18,11 +18,7 @@ export const cartSlice = createSlice({
     reducers: {
         setCart: (state, action: PayloadAction<Array<ICard>>) => {
             state.cart = action.payload
-            let total = 0;
-            action.payload.forEach((item) => {
-                total += item.price
-            })
-            state.totalPrice = total;
+            state.totalPrice = getDefaultValForTotalPrice(action.payload);
         },
     },
 })

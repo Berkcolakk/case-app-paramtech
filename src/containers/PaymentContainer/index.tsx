@@ -7,14 +7,14 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { HOME } from "@/router";
 const PaymentContainer = () => {
-    const selectedCards = useSelector((state: RootState) => state.card.cart);
+    const cart = useSelector((state: RootState) => state.card.cart);
     const router = useRouter();
 
     useEffect(() => {
-        if (selectedCards.length === 0) {
+        if (cart.length === 0) {
             router.push(HOME)
         }
-    }, [selectedCards, router])
+    }, [cart, router])
 
     return (
         <>

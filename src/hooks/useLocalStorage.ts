@@ -7,7 +7,6 @@ import {
 } from 'react'
 import { useEventListener } from './useEventListener'
 import useEventCallback from './useEventCallback'
-import { b64d, b64e } from '@/utils/encrpytion.utils'
 
 
 declare global {
@@ -58,7 +57,7 @@ export function useLocalStorage<T>(
       const newValue = value instanceof Function ? value(storedValue) : value
 
       // Save to local storage
-      window.localStorage.setItem(key, b64e(JSON.stringify(newValue)) || "")
+      window.localStorage.setItem(key, JSON.stringify(newValue) || "")
 
       // Save state
       setStoredValue(newValue)
@@ -98,7 +97,7 @@ export function useLocalStorage<T>(
 // A wrapper for "JSON.parse()"" to support "undefined" value
 function parseJSON<T>(value: string | null): T | undefined {
   try {
-    return value === 'undefined' ? undefined : JSON.parse(b64d(value) ?? '')
+    return value === 'undefined' ? undefined : JSON.parse(value ?? '')
   } catch {
     console.log('parsing error on', { value })
     return undefined

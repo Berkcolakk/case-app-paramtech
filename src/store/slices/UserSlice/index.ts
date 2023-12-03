@@ -1,6 +1,5 @@
 import { IUser } from '@/interfaces/Login'
 import { getCookie } from '@/utils/cookie.utils'
-import { b64d } from '@/utils/encrpytion.utils'
 import { createSlice } from '@reduxjs/toolkit'
 
 export interface CounterState {
@@ -10,7 +9,7 @@ export interface CounterState {
 
 const initialState: CounterState = {
     token: getCookie("token"),
-    email: b64d(localStorage.email)?.replace(/['"]+/g, '')
+    email: localStorage.email?.replace(/['"]+/g, '')
 }
 
 export const userSlice = createSlice({
