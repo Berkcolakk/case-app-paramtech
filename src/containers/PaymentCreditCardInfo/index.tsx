@@ -1,6 +1,10 @@
+import Agreement from "@/components/Aggrement";
+
 const PaymentCreditCardInfo = () => {
     return (
-        <>TEST</>
+        <>
+            <Agreement />
+        </>
     )
 }
 export default PaymentCreditCardInfo;
