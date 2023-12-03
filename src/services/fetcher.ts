@@ -14,6 +14,5 @@ function updateOptions(options: RequestInit) {
 }
 
 export default function fetcher(url: string, options: RequestInit) {
-    debugger
     return fetch(url, { ...updateOptions(options) });
 }

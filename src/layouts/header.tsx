@@ -42,7 +42,7 @@ const Header = () => {
     ];
     return (
         <LayoutHeader style={{ lineHeight: 0 }}>
-            <Link href={"/home"}>
+            <Link href={HOME}>
                 <Image
                     height={65}
                     width={200}

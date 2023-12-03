@@ -1,2 +1,3 @@
 export const DEFAULT = "/"
-export const HOME = "/home";
+export const HOME = "/packages";
+export const PAYMENT = "/payment";

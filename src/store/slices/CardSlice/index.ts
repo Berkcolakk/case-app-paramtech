@@ -1,26 +1,32 @@
-import { IUser } from '@/interfaces/Login'
-import { getCookie } from '@/utils/cookie.utils'
+import { ICard } from '@/interfaces/Card'
 import { b64d } from '@/utils/encrpytion.utils'
-import { createSlice } from '@reduxjs/toolkit'
+import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
 export interface CounterState {
-    selectedCardIds: Array<string>
+    selectedCards: Array<ICard>
+    totalPrice: number;
 }
 
 const initialState: CounterState = {
-    selectedCardIds: JSON.parse(b64d(localStorage.getItem("selectedIds")) ?? "[]")
+    selectedCards: JSON.parse(b64d(localStorage.getItem("selectedCards")) ?? "[]"),
+    totalPrice: 0
 }
 
 export const cardSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
-        setSelectedCardIds: (state, action) => {
-            state.selectedCardIds = action.payload
+        setSelectedCards: (state, action: PayloadAction<Array<ICard>>) => {
+            state.selectedCards = action.payload
+            let total = 0;
+            action.payload.forEach((item) => {
+                total += item.price
+            })
+            state.totalPrice = total;
         },
     },
 })
 
-export const { setSelectedCardIds } = cardSlice.actions
+export const { setSelectedCards } = cardSlice.actions
 
 export default cardSlice.reducer
